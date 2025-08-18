@@ -16,7 +16,7 @@ pub const Option = struct {
 pub const Error = error{ InvalidOption, MissingArgument };
 
 pub const OptionsIterator = struct {
-    argv: [][*:0]const u8,
+    argv: []const [*:0]const u8,
     opts: []const u8,
 
     /// Index of the current element of the argv vector.
@@ -75,7 +75,7 @@ pub const OptionsIterator = struct {
     }
 
     /// Return remaining arguments, if any.
-    pub fn args(self: *OptionsIterator) ?[][*:0]const u8 {
+    pub fn args(self: *OptionsIterator) ?[]const [*:0]const u8 {
         if (self.optind < self.argv.len)
             return self.argv[self.optind..]
         else
@@ -83,7 +83,7 @@ pub const OptionsIterator = struct {
     }
 };
 
-fn getoptArgv(argv: [][*:0]const u8, optstring: []const u8) OptionsIterator {
+fn getoptArgv(argv: []const [*:0]const u8, optstring: []const u8) OptionsIterator {
     return OptionsIterator{
         .argv = argv,
         .opts = optstring,
@@ -92,13 +92,11 @@ fn getoptArgv(argv: [][*:0]const u8, optstring: []const u8) OptionsIterator {
 
 /// Parse os.argv according to the optstring.
 pub fn getopt(optstring: []const u8) OptionsIterator {
-    // https://github.com/ziglang/zig/issues/8808
-    const argv: [][*:0]const u8 = os.argv;
-    return getoptArgv(argv, optstring);
+    return getoptArgv(os.argv, optstring);
 }
 
 test "no args separate" {
-    var argv = [_][*:0]const u8{
+    const argv = [_][*:0]const u8{
         "getopt",
         "-a",
         "-b",
