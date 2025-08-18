@@ -17,4 +17,12 @@ pub fn build(b: *std.Build) void {
 
     const test_step = b.step("test", "Run tests");
     test_step.dependOn(&run_tests.step);
+
+    const exe = b.addExecutable(.{
+        .name = "getopt-example",
+        .root_source_file = b.path("example.zig"),
+        .target = target,
+        .optimize = optimize,
+    });
+    b.installArtifact(exe);
 }

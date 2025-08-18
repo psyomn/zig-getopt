@@ -1,0 +1,13 @@
+.{
+    .name = .getopt,
+    .fingerprint = 0x2a601179a88802bf,
+    .minimum_zig_version = "0.14.1",
+    .version = "1.0.4",
+    .paths = .{
+        "LICENSE.txt",
+        "README.md",
+        "build.zig",
+        "build.zig.zon",
+        "getopt.zig",
+    },
+}
