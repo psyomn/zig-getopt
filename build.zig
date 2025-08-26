@@ -9,9 +9,11 @@ pub fn build(b: *std.Build) void {
     });
 
     const tests = b.addTest(.{
-        .root_source_file = b.path("getopt.zig"),
-        .target = target,
-        .optimize = optimize,
+        .root_module = b.createModule(.{
+            .root_source_file = b.path("getopt.zig"),
+            .target = target,
+            .optimize = optimize,
+        }),
     });
     const run_tests = b.addRunArtifact(tests);
 
@@ -20,9 +22,11 @@ pub fn build(b: *std.Build) void {
 
     const exe = b.addExecutable(.{
         .name = "getopt-example",
-        .root_source_file = b.path("example.zig"),
-        .target = target,
-        .optimize = optimize,
+        .root_module = b.createModule(.{
+            .root_source_file = b.path("example.zig"),
+            .target = target,
+            .optimize = optimize,
+        }),
     });
     b.installArtifact(exe);
 }
