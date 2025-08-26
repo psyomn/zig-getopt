@@ -1,7 +1,7 @@
 .{
     .name = .getopt,
     .fingerprint = 0x2a601179a88802bf,
-    .minimum_zig_version = "0.14.1",
+    .minimum_zig_version = "0.15.1",
     .version = "1.0.4",
     .paths = .{
         "LICENSE.txt",
