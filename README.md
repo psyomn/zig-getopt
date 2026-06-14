@@ -5,6 +5,9 @@ the official repo here:
 
 - <https://github.com/dmgk/zig-getopt>
 
+I'm keeping this fork updated with the latest Zig as best as I can, and I do not
+plan to add more features.
+
 # Minimal POSIX getopt(3) implementation in Zig
 
 This is a minimal, allocation-free getopt(3) implementation with [POSIX-conforming](http://pubs.opengroup.org/onlinepubs/9699919799/functions/getopt.html) argument parsing semantics.
