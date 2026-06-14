@@ -2,11 +2,11 @@ const std = @import("std");
 const debug = std.debug;
 const getopt = @import("getopt.zig");
 
-pub fn main() void {
+pub fn main(init: std.process.Init) void {
     var arg: []const u8 = undefined;
     var verbose: bool = false;
 
-    var opts = getopt.getopt("a:vh");
+    var opts = getopt.getopt(init.minimal.args, "a:vh");
 
     while (opts.next()) |maybe_opt| {
         if (maybe_opt) |opt| {

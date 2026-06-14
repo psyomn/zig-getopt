@@ -1,8 +1,8 @@
 .{
     .name = .getopt,
     .fingerprint = 0x2a601179a88802bf,
-    .minimum_zig_version = "0.15.1",
-    .version = "1.0.4",
+    .minimum_zig_version = "0.16.0",
+    .version = "1.0.5",
     .paths = .{
         "LICENSE.txt",
         "README.md",
