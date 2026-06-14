@@ -91,8 +91,10 @@ fn getoptArgv(argv: []const [*:0]const u8, optstring: []const u8) OptionsIterato
 }
 
 /// Parse os.argv according to the optstring.
-pub fn getopt(optstring: []const u8) OptionsIterator {
-    return getoptArgv(os.argv, optstring);
+pub fn getopt(args: std.process.Args, optstring: []const u8) OptionsIterator {
+    // might not build in other platforms but I'm not interested in getopt on
+    // windows.
+    return getoptArgv(args.vector, optstring);
 }
 
 test "no args separate" {
